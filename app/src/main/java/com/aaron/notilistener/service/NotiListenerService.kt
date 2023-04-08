@@ -43,10 +43,10 @@ class NotiListenerService : NotificationListenerService() {
 
         scope.launch {
             val bundle = noti.notification.extras
-            Log.d("TEST", "[test] packageName: ${noti.packageName}")
-            Log.d("TEST", "[test] title: ${bundle.getString("android.title")}")
-            Log.d("TEST", "[test] text: ${bundle.getString("android.text")}")
-            Log.d("TEST", "[test] bigText: ${bundle.getString("android.bigText")}")
+            Log.d(TAG, "[test] packageName: ${noti.packageName}")
+            Log.d(TAG, "[test] title: ${bundle.getString("android.title")}")
+            Log.d(TAG, "[test] text: ${bundle.getString("android.text")}")
+            Log.d(TAG, "[test] bigText: ${bundle.getString("android.bigText")}")
             notiRepo.save(
                 noti.packageName,
                 noti.postTime,

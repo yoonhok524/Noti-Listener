@@ -2,6 +2,7 @@ package com.aaron.notilistener.service
 
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
+import android.util.Log
 import com.aaron.notilistener.common.toast
 import com.aaron.notilistener.data.repo.NotiRepository
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,11 +43,16 @@ class NotiListenerService : NotificationListenerService() {
 
         scope.launch {
             val bundle = noti.notification.extras
+            Log.d("TEST", "[test] packageName: ${noti.packageName}")
+            Log.d("TEST", "[test] title: ${bundle.getString("android.title")}")
+            Log.d("TEST", "[test] text: ${bundle.getString("android.text")}")
+            Log.d("TEST", "[test] bigText: ${bundle.getString("android.bigText")}")
             notiRepo.save(
                 noti.packageName,
                 noti.postTime,
                 title = bundle.getString("android.title"),
-                body = bundle.getString("android.bigText"),
+                body = bundle.getString("android.text")?.trim()
+                    ?.ifBlank { bundle.getString("android.bigText")?.trim() ?: "" },
             )
         }
     }

@@ -3,6 +3,7 @@ package com.aaron.notilistener.data.repo
 import com.aaron.notilistener.data.db.dao.NotiDao
 import com.aaron.notilistener.data.db.entity.NotiEntity
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -23,7 +24,7 @@ class NotiRepository @Inject constructor(
         }
     }
 
-    suspend fun getAll(): List<NotiEntity> {
+    suspend fun getAll(): Flow<List<NotiEntity>> {
         return withContext(ioDispatcher) {
             notiDao.loadAll()
         }

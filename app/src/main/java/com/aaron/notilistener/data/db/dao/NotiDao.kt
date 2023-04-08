@@ -5,12 +5,13 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.aaron.notilistener.data.db.entity.NotiEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NotiDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg entity: NotiEntity)
+    suspend fun insert(vararg entity: NotiEntity)
 
     @Query("SELECT * FROM NotiEntity")
-    suspend fun loadAll(): List<NotiEntity>
+    fun loadAll(): Flow<List<NotiEntity>>
 }

@@ -1,6 +1,7 @@
 package com.aaron.notilistener.ui.main
 
 import android.content.Intent
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -53,7 +54,8 @@ fun MainScreen(
                     )
                 }
                 .padding(8.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text = "Permission")
             Switch(
@@ -66,7 +68,9 @@ fun MainScreen(
         LazyColumn {
             itemsIndexed(notifications) { _, noti ->
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(8.dp),
+                    modifier = Modifier.fillMaxWidth()
+                        .border(1.dp, MaterialTheme.colors.secondary)
+                        .padding(8.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -82,7 +86,11 @@ fun MainScreen(
                             style = MaterialTheme.typography.subtitle2
                         )
                         Text(
-                            text = noti.body ?: "",
+                            text = "[S-text] " + noti.text,
+                            style = MaterialTheme.typography.body2
+                        )
+                        Text(
+                            text = "[L-text] " + noti.bigText,
                             style = MaterialTheme.typography.body2
                         )
                     }

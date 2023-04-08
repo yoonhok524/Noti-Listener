@@ -10,5 +10,6 @@ data class NotiEntity(
     val pkgName: String,
     val time: Long = System.currentTimeMillis(),
     val title: String? = null,
-    val body: String? = null
+    val text: String? = null,
+    val bigText: String? = null
 )

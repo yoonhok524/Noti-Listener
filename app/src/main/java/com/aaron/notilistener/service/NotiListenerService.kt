@@ -51,8 +51,8 @@ class NotiListenerService : NotificationListenerService() {
                 noti.packageName,
                 noti.postTime,
                 title = bundle.getString("android.title"),
-                body = bundle.getString("android.text")?.trim()
-                    ?.ifBlank { bundle.getString("android.bigText")?.trim() ?: "" },
+                text = bundle.getString("android.text")?.trim(),
+                bigText = bundle.getString("android.bigText")?.trim()
             )
         }
     }

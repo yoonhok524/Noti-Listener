@@ -43,16 +43,21 @@ class NotiListenerService : NotificationListenerService() {
 
         scope.launch {
             val bundle = noti.notification.extras
-            Log.d(TAG, "[test] packageName: ${noti.packageName}")
-            Log.d(TAG, "[test] title: ${bundle.getString("android.title")}")
-            Log.d(TAG, "[test] text: ${bundle.getString("android.text")}")
-            Log.d(TAG, "[test] bigText: ${bundle.getString("android.bigText")}")
+            Log.d(TAG, "[onNotificationPosted] packageName: ${noti.packageName}")
+            Log.d(TAG, "[onNotificationPosted] title: ${bundle.getString("android.title")}")
+            Log.d(TAG, "[onNotificationPosted] text: ${bundle.getString("android.text")}")
+            Log.d(TAG, "[onNotificationPosted] bigText: ${bundle.getString("android.bigText")}")
+
+            val meta: String = "groupKey: " + noti.groupKey + ", key: " + noti.key + ", category: " + noti.notification.category + ", channelId: " + noti.notification.channelId + ", group: " + noti.notification.group + ", settingsText: " + noti.notification.settingsText + ", tickerText: " + noti.notification.tickerText
+            Log.d(TAG, "[onNotificationPosted] meta: $meta")
+
             notiRepo.save(
                 noti.packageName,
                 noti.postTime,
                 title = bundle.getString("android.title"),
                 text = bundle.getString("android.text")?.trim(),
-                bigText = bundle.getString("android.bigText")?.trim()
+                bigText = bundle.getString("android.bigText")?.trim(),
+                meta = meta
             )
         }
     }

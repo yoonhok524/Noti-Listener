@@ -11,5 +11,6 @@ data class NotiEntity(
     val time: Long = System.currentTimeMillis(),
     val title: String? = null,
     val text: String? = null,
-    val bigText: String? = null
+    val bigText: String? = null,
+    val meta: String
 )

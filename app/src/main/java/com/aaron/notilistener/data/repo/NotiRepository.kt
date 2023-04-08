@@ -18,10 +18,11 @@ class NotiRepository @Inject constructor(
         time: Long,
         title: String?,
         text: String?,
-        bigText: String?
+        bigText: String?,
+        meta: String
     ) {
         withContext(ioDispatcher) {
-            notiDao.insert(NotiEntity(pkgName = pkgName, time = time, title = title, text = text, bigText = bigText))
+            notiDao.insert(NotiEntity(pkgName = pkgName, time = time, title = title, text = text, bigText = bigText, meta = meta))
         }
     }
 

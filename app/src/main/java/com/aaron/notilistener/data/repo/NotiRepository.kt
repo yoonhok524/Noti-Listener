@@ -4,6 +4,7 @@ import com.aaron.notilistener.data.db.dao.NotiDao
 import com.aaron.notilistener.data.db.entity.NotiEntity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton

@@ -51,7 +51,7 @@ class NotiListenerService : NotificationListenerService() {
             val meta: String = "groupKey: " + noti.groupKey + ", key: " + noti.key + ", category: " + noti.notification.category + ", channelId: " + noti.notification.channelId + ", group: " + noti.notification.group + ", settingsText: " + noti.notification.settingsText + ", tickerText: " + noti.notification.tickerText
             Log.d(TAG, "[onNotificationPosted] meta: $meta")
 
-            if (noti.packageName == "com.kakao.talk") {
+            if (noti.packageName == "com.kakao.talk" && bundle.getString("android.title")?.isNotBlank() == true) {
                 notiRepo.save(
                     noti.packageName,
                     noti.postTime,

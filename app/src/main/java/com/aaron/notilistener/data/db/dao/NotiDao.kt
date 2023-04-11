@@ -12,6 +12,6 @@ interface NotiDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(vararg entity: NotiEntity)
 
-    @Query("SELECT * FROM NotiEntity")
+    @Query("SELECT * FROM NotiEntity ORDER BY time DESC")
     fun loadAll(): Flow<List<NotiEntity>>
 }
